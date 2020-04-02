@@ -319,7 +319,19 @@
 
 *** I am executed via Airflow ***
 
-=================================</logmessage>
+=================================
+
+
+  _    _                            
+ | |  | |                           
+ | |__| |_   _ _ __ _ __ __ _ _   _ 
+ |  __  | | | | '__| '__/ _` | | | |
+ | |  | | |_| | |  | | | (_| | |_| |
+ |_|  |_|\__,_|_|  |_|  \__,_|\__, |
+                               __/ |
+                              |___/ 
+
+Ok, that's enough ... let me sleep a bit now ...</logmessage>
       <loglevel>Basic</loglevel>
       <logsubject />
       <parallel>N</parallel>
@@ -338,7 +350,40 @@
       <draw>Y</draw>
       <nr>0</nr>
       <xloc>192</xloc>
-      <yloc>368</yloc>
+      <yloc>528</yloc>
+      <attributes_kjc />
+    </entry>
+    <entry>
+      <name>Wait for</name>
+      <description />
+      <type>DELAY</type>
+      <attributes />
+      <maximumTimeout>90</maximumTimeout>
+      <scaletime>0</scaletime>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>192</xloc>
+      <yloc>320</yloc>
+      <attributes_kjc />
+    </entry>
+    <entry>
+      <name>Write to log - Goodbye</name>
+      <description />
+      <type>WRITE_TO_LOG</type>
+      <attributes />
+      <logmessage>=================================
+
+Oh, just woke up ... did I miss something?!
+
+=================================</logmessage>
+      <loglevel>Basic</loglevel>
+      <logsubject />
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>192</xloc>
+      <yloc>416</yloc>
       <attributes_kjc />
     </entry>
   </entries>
@@ -354,6 +399,24 @@
     </hop>
     <hop>
       <from>Write to log</from>
+      <to>Wait for</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Wait for</from>
+      <to>Write to log - Goodbye</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Write to log - Goodbye</from>
       <to>Success</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>

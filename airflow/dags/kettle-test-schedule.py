@@ -17,5 +17,5 @@ dag = DAG('KettlePrintLog', default_args=default_args, schedule_interval=timedel
 
 t1 = BashOperator(
     task_id='KettleWriteToLog',
-    bash_command='/Users/diethardsteiner/apps/pdi-ce-8.2/kitchen.sh -file=/Users/diethardsteiner/git/airflow-example/pdi/jobs-and-transformations/jb-write-to-log.kjb',
+    bash_command='/Users/diethardsteiner/apps/pdi-ce-8.2/kitchen.sh -file=/Users/diethardsteiner/git/airflow-example/pdi/jobs-and-transformations/job-write-to-log.kjb',
     dag=dag)
